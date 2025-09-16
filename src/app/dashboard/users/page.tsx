@@ -114,8 +114,8 @@ export default function UsersPage() {
             onClick={() => setViewMode('grid')}
             className="flex items-center space-x-2"
           >
-            <Grid className="text-gray-600 h-4 w-4" />
-            <span className='text-gray-600'>Grid</span>
+            <Grid className={viewMode === 'grid' ? 'text-white h-4 w-4' : 'text-gray-600 h-4 w-4'} />
+            <span className={viewMode === 'grid' ? 'text-white' : 'text-gray-600'}>Grid</span>
           </Button>
           <Button
             variant={viewMode === 'table' ? 'default' : 'outline'}
@@ -123,8 +123,8 @@ export default function UsersPage() {
             onClick={() => setViewMode('table')}
             className="flex items-center space-x-2"
           >
-            <List className="text-gray-600 h-4 w-4" />
-            <span className='text-gray-600'>Table</span>
+            <List className={viewMode === 'table' ? 'text-white h-4 w-4' : 'text-gray-600 h-4 w-4'} />
+            <span className={viewMode === 'table' ? 'text-white' : 'text-gray-600'}>Table</span>
           </Button>
         </div>
       </div>

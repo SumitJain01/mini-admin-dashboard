@@ -3,18 +3,21 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuthStore } from '@/lib/store';
+import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
 
 export default function Home() {
   const router = useRouter();
-  const { isAuthenticated } = useAuthStore();
+  const { isAuthenticated, _hasHydrated } = useAuthStore();
 
   useEffect(() => {
+    if (!_hasHydrated) return;
+
     if (isAuthenticated) {
       router.push('/dashboard');
     } else {
       router.push('/auth/login');
     }
-  }, [isAuthenticated, router]);
+  }, [isAuthenticated, _hasHydrated, router]);
 
   return (
     <div className="min-h-screen flex items-center justify-center">
@@ -22,7 +25,7 @@ export default function Home() {
         <h1 className="text-2xl font-bold text-gray-900 mb-4">
           Mini Admin Dashboard
         </h1>
-        <p className="text-gray-600">Redirecting...</p>
+        <LoadingSpinner text={_hasHydrated ? 'Redirecting...' : 'Loading...'} />
       </div>
     </div>
   );
