@@ -3,7 +3,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { useParams, useRouter } from 'next/navigation';
 import { usersApi } from '@/lib/api/users';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Mail, Phone, Building, Globe, MapPin, User } from 'lucide-react';
 import { Loader2, AlertCircle } from 'lucide-react';
@@ -185,7 +185,7 @@ export default function UserDetailPage() {
               </div>
               <div>
                 <label className="text-sm font-medium text-gray-500">Catch Phrase</label>
-                <p className="text-lg italic">"{user.company.catchPhrase}"</p>
+                <p className="text-lg italic">&ldquo;{user.company.catchPhrase}&rdquo;</p>
               </div>
               <div>
                 <label className="text-sm font-medium text-gray-500">Business</label>

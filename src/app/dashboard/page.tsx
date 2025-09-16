@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Users, FileText, Activity } from 'lucide-react';
 
@@ -70,24 +71,24 @@ export default function DashboardPage() {
                 <Users className="h-5 w-5 text-blue-600" />
                 <span className="font-medium">Manage Users</span>
               </div>
-              <a 
+              <Link 
                 href="/dashboard/users" 
                 className="text-blue-600 hover:text-blue-800 text-sm font-medium"
               >
                 View →
-              </a>
+              </Link>
             </div>
             <div className="flex items-center justify-between p-3 border rounded-lg">
               <div className="flex items-center space-x-3">
                 <FileText className="h-5 w-5 text-green-600" />
                 <span className="font-medium">Manage Posts</span>
               </div>
-              <a 
+              <Link 
                 href="/dashboard/posts" 
                 className="text-green-600 hover:text-green-800 text-sm font-medium"
               >
                 View →
-              </a>
+              </Link>
             </div>
           </CardContent>
         </Card>

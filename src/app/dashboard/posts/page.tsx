@@ -8,7 +8,7 @@ import { PostCard } from '@/components/features/posts/post-card';
 import { PostModal } from '@/components/features/posts/post-modal';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Search, Filter, Loader2, AlertCircle } from 'lucide-react';
 import { debounce } from '@/lib/utils';
 import { Post, User } from '@/types';
@@ -27,7 +27,7 @@ export default function PostsPage() {
     queryFn: postsApi.getAll,
   });
 
-  const { data: users = [], isLoading: usersLoading } = useQuery({
+  const { data: users = [] } = useQuery({
     queryKey: ['users'],
     queryFn: usersApi.getAll,
   });

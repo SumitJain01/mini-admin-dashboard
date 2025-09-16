@@ -32,7 +32,7 @@ export default function LoginPage() {
     resolver: zodResolver(loginSchema),
   });
 
-  const onSubmit = async (data: LoginFormData) => {
+  const onSubmit = async () => {
     setIsLoading(true);
     setError('');
 
@@ -44,7 +44,7 @@ export default function LoginPage() {
       
       login(user);
       router.push('/dashboard');
-    } catch (err) {
+    } catch {
       setError('Login failed. Please try again.');
     } finally {
       setIsLoading(false);

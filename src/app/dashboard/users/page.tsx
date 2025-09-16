@@ -8,7 +8,7 @@ import { UserCard } from '@/components/features/users/user-card';
 import { UsersTable } from '@/components/features/users/users-table';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Search, Grid, List, Loader2, AlertCircle } from 'lucide-react';
 import { debounce } from '@/lib/utils';
 import { CustomHead } from '@/components/ui/head';
@@ -47,7 +47,7 @@ export default function UsersPage() {
 
   const totalPages = Math.ceil(filteredUsers.length / itemsPerPage);
 
-  const handleUserClick = (user: any) => {
+  const handleUserClick = (user: { id: number }) => {
     router.push(`/dashboard/users/${user.id}`);
   };
 
