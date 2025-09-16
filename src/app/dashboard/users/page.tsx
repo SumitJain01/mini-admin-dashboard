@@ -4,8 +4,8 @@ import { useState, useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import { usersApi } from '@/lib/api/users';
-import { UserCard } from '@/components/features/users/user-card';
-import { UsersTable } from '@/components/features/users/users-table';
+import { UserCard } from '@/components/features/users/UserCard';
+import { UsersTable } from '@/components/features/users/UsersTable';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -91,7 +91,7 @@ export default function UsersPage() {
       <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Users</h1>
+          <h1 className="text-2xl lg:text-3xl font-bold text-gray-900">Users</h1>
           <p className="text-gray-600">
             Manage and view user information ({filteredUsers.length} users)
           </p>
@@ -114,8 +114,8 @@ export default function UsersPage() {
             onClick={() => setViewMode('grid')}
             className="flex items-center space-x-2"
           >
-            <Grid className="h-4 w-4" />
-            <span>Grid</span>
+            <Grid className="text-gray-600 h-4 w-4" />
+            <span className='text-gray-600'>Grid</span>
           </Button>
           <Button
             variant={viewMode === 'table' ? 'default' : 'outline'}
@@ -123,8 +123,8 @@ export default function UsersPage() {
             onClick={() => setViewMode('table')}
             className="flex items-center space-x-2"
           >
-            <List className="h-4 w-4" />
-            <span>Table</span>
+            <List className="text-gray-600 h-4 w-4" />
+            <span className='text-gray-600'>Table</span>
           </Button>
         </div>
       </div>
@@ -138,7 +138,7 @@ export default function UsersPage() {
       ) : (
         <>
           {viewMode === 'grid' ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
               {paginatedUsers.map((user) => (
                 <UserCard
                   key={user.id}
@@ -155,16 +155,17 @@ export default function UsersPage() {
           )}
 
           {totalPages > 1 && (
-            <div className="flex text-gray-600 items-center justify-center space-x-2">
+            <div className="flex flex-col sm:flex-row text-gray-600 items-center justify-center space-y-2 sm:space-y-0 sm:space-x-2">
               <Button
                 variant="outline"
                 size="sm"
                 onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
                 disabled={currentPage === 1}
+                className="w-full sm:w-auto"
               >
                 Previous
               </Button>
-              <span className="text-sm text-gray-600">
+              <span className="text-sm text-gray-600 px-4">
                 Page {currentPage} of {totalPages}
               </span>
               <Button
@@ -172,6 +173,7 @@ export default function UsersPage() {
                 size="sm"
                 onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
                 disabled={currentPage === totalPages}
+                className="w-full sm:w-auto"
               >
                 Next
               </Button>

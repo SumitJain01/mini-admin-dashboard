@@ -4,8 +4,8 @@ import { useState, useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { postsApi } from '@/lib/api/posts';
 import { usersApi } from '@/lib/api/users';
-import { PostCard } from '@/components/features/posts/post-card';
-import { PostModal } from '@/components/features/posts/post-modal';
+import { PostCard } from '@/components/features/posts/PostCard';
+import { PostModal } from '@/components/features/posts/PostModal';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -115,7 +115,7 @@ export default function PostsPage() {
       />
       <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold text-gray-900">Posts</h1>
+        <h1 className="text-2xl lg:text-3xl font-bold text-gray-900">Posts</h1>
         <p className="text-gray-600">
           Browse and manage posts ({filteredPosts.length} posts)
         </p>
@@ -173,7 +173,7 @@ export default function PostsPage() {
         </Card>
       ) : (
         <>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
             {paginatedPosts.map((post) => (
               <PostCard
                 key={post.id}
@@ -184,16 +184,17 @@ export default function PostsPage() {
           </div>
 
           {totalPages > 1 && (
-            <div className="flex  text-gray-600 items-center justify-center space-x-2">
+            <div className="flex flex-col sm:flex-row text-gray-600 items-center justify-center space-y-2 sm:space-y-0 sm:space-x-2">
               <Button
                 variant="outline"
                 size="sm"
                 onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
                 disabled={currentPage === 1}
+                className="w-full sm:w-auto"
               >
                 Previous
               </Button>
-              <span className="text-sm text-gray-600">
+              <span className="text-sm text-gray-600 px-4">
                 Page {currentPage} of {totalPages}
               </span>
               <Button
@@ -201,6 +202,7 @@ export default function PostsPage() {
                 size="sm"
                 onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
                 disabled={currentPage === totalPages}
+                className="w-full sm:w-auto"
               >
                 Next
               </Button>

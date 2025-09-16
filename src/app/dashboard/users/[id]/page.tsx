@@ -69,12 +69,12 @@ export default function UserDetailPage() {
           <span className=' text-gray-600'>Back</span>
         </Button>
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">{user.name}</h1>
+          <h1 className="text-2xl lg:text-3xl font-bold text-gray-900">{user.name}</h1>
           <p className="text-gray-600">User Profile Details</p>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
         {/* Basic Information */}
         <Card>
           <CardHeader>
@@ -178,7 +178,7 @@ export default function UserDetailPage() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
               <div>
                 <label className="text-sm font-medium text-gray-500">Company Name</label>
                 <p className="text-lg font-semibold">{user.company.name}</p>
