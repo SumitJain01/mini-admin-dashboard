@@ -2,13 +2,17 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Users, FileText, Activity } from 'lucide-react';
+import { getDashboardStats } from '@/lib/api/server';
 
 export const metadata: Metadata = {
   title: 'Dashboard | Mini Admin Dashboard',
   description: 'Overview of the admin dashboard',
 };
 
-export default function DashboardPage() {
+// This function runs on the server for SSR
+export default async function DashboardPage() {
+  const stats = await getDashboardStats();
+
   return (
     <div className="space-y-6">
         <div>
@@ -23,7 +27,7 @@ export default function DashboardPage() {
             <Users className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">10</div>
+            <div className="text-2xl font-bold">{stats.totalUsers}</div>
             <p className="text-xs text-muted-foreground">
               From JSONPlaceholder API
             </p>
@@ -36,7 +40,7 @@ export default function DashboardPage() {
             <FileText className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">100</div>
+            <div className="text-2xl font-bold">{stats.totalPosts}</div>
             <p className="text-xs text-muted-foreground">
               From JSONPlaceholder API
             </p>
@@ -49,7 +53,7 @@ export default function DashboardPage() {
             <Activity className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">1</div>
+            <div className="text-2xl font-bold">{stats.activeSessions}</div>
             <p className="text-xs text-muted-foreground">
               Current session
             </p>
